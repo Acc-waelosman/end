@@ -35,42 +35,6 @@ document.addEventListener('DOMContentLoaded', () => {
     "رئيس حسابات",
     "مدير مالي",
     "محلل مالي",
-    "مراجع حسابات"
-  ];
-  let professionIndex = 0;
-  let charIndex = 0;
-  let isDeleting = false;
-  const animatedTextElement = document.querySelector('.animated-text');
-
-  function typeProfession() {
-    const currentProfession = professions[professionIndex];
-    if (isDeleting) {
-      animatedTextElement.textContent = currentProfession.substring(0, charIndex - 1);
-      charIndex--;
-    } else {
-      animatedTextElement.textContent = currentProfession.substring(0, charIndex + 1);
-      charIndex++;
-    }
-
-    if (!isDeleting && charIndex === currentProfession.length + 1) {
-      setTimeout(() => isDeleting = true, 1000); // انتظر ثانية قبل البدء في المسح
-    } else if (isDeleting && charIndex === 0) {
-      isDeleting = false;
-      professionIndex = (professionIndex + 1) % professions.length;
-      setTimeout(typeProfession, 500); // انتظر نصف ثانية قبل كتابة الكلمة التالية
-    } else {
-      const typingSpeed = isDeleting ? 75 : 150; // سرعة المسح أسرع من الكتابة
-      setTimeout(typeProfession, typingSpeed);
-    }
-  }
-
-  typeProfession(); // ابدأ وظيفة الكتابة
-});
-// كود النص المتحرك
-  const professions = [
-    "رئيس حسابات",
-    "مدير مالي",
-    "محلل مالي",
     "مراجع حسابات",
     "وائل عثمان"
   ];
@@ -90,15 +54,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (!isDeleting && charIndex === currentProfession.length + 1) {
-      setTimeout(() => isDeleting = true, 1500); // Wait 1.5 seconds before deleting
+      setTimeout(() => isDeleting = true, 1500);
     } else if (isDeleting && charIndex === 0) {
       isDeleting = false;
       professionIndex = (professionIndex + 1) % professions.length;
-      setTimeout(typeProfession, 500); // Wait 0.5 seconds before typing the next word
+      setTimeout(typeProfession, 500);
     } else {
-      const typingSpeed = isDeleting ? 75 : 150; // Deleting is faster than typing
+      const typingSpeed = isDeleting ? 75 : 150;
       setTimeout(typeProfession, typingSpeed);
     }
   }
 
-  typeProfession(); // Start the typing function
+  typeProfession();
+});
