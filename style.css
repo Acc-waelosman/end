@@ -279,4 +279,38 @@ body {
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
+
+}
+/* CSS styles to make the text look good and add the blinking cursor */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+.hero-text {
+    font-size: 3rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+#typed-text::after {
+    content: '|';
+    display: inline;
+    animation: blink 0.7s infinite;
+    margin-right: 5px; /* Adjust margin for right-to-left languages */
+}
+
+@keyframes blink {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
 }
